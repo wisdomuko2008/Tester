@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Flexi Tutors</title>
+<style>
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f0f8ff;
+    margin: 0;
+    padding: 0;
+    color: #333;
+  }
+  header {
+    background: #3cb371;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    position: relative;
+  }
+  nav {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+  }
+  nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+  }
+  nav a:hover {
+    text-decoration: underline;
+  }
+  .menu-icon {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    font-size: 26px;
+    cursor: pointer;
+    display: none;
+  }
+  @media (max-width: 768px) {
+    nav {
+      display: none;
+      flex-direction: column;
+      background-color: #3cb371;
+      position: absolute;
+      top: 60px;
+      right: 0;
+      width: 200px;
+      padding: 10px;
+    }
+    nav a {
+      display: block;
+      padding: 10px;
+      border-bottom: 1px solid #2e7d32;
+    }
+    .menu-icon {
+      display: block;
+    }
+  }
+  .hero {
+    background: #e0f2f1;
+    padding: 50px 20px;
+    text-align: center;
+  }
+  .hero h1 {
+    margin-bottom: 10px;
+    font-size: 2.5em;
+    color: #2e7d32;
+  }
+  .hero p {
+    font-size: 1.2em;
+  }
+  .services {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 40px 20px;
+    gap: 20px;
+  }
+  .service-item {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+    width: 280px;
+    padding: 20px;
+    text-align: center;
+  }
+  .service-item h3 {
+    color: #3cb371;
+    margin-bottom: 10px;
+  }
+  .faq-section {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 0 20px;
+  }
+  .faq-section h2 {
+    color: #2e7d32;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  .faq {
+    background: white;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    padding: 15px 20px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  }
+  .faq h4 {
+    cursor: pointer;
+    margin: 0;
+    position: relative;
+    padding-right: 25px;
+  }
+  .faq h4::after {
+    content: '+';
+    position: absolute;
+    right: 0;
+    top: 0;
+    font-size: 1.5em;
+    line-height: 1;
+  }
+  .faq.open h4::after {
+    content: '-';
+  }
+  .faq p {
+    display: none;
+    margin-top: 10px;
+  }
+  .faq.open p {
+    display: block;
+  }
+  .contact-section {
+    background: #e0f2f1;
+    padding: 40px 20px;
+    max-width: 600px;
+    margin: 0 auto 60px;
+    border-radius: 10px;
+  }
+  .contact-section h2 {
+    color: #2e7d32;
+    text-align: center;
+    margin-bottom: 25px;
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+  label {
+    margin-bottom: 5px;
+    font-weight: 600;
+  }
+  input, textarea {
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 2px solid #3cb371;
+    border-radius: 5px;
+    font-size: 1em;
+  }
+  button {
+    background-color: #3cb371;
+    color: white;
+    border: none;
+    padding: 15px;
+    font-size: 1.1em;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  button:hover {
+    background-color: #2e7d32;
+  }
+  footer {
+    background: #3cb371;
+    color: white;
+    text-align: center;
+    padding: 15px 0;
+    margin-top: 40px;
+  }
+  .whatsapp-float {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #25d366;
+    color: white;
+    padding: 12px 15px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-size: 20px;
+    z-index: 1000;
+  }
+  .ai-bot {
+    position: fixed;
+    bottom: 80px;
+    right: 20px;
+    background-color: #007bff;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 10px;
+    font-size: 14px;
+    cursor: pointer;
+    z-index: 1000;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Flexi Tutors</h1>
+  <div class="menu-icon" onclick="toggleMenu()">☰</div>
+  <nav id="mainNav">
+    <a href="#about">About Us</a>
+    <a href="#services">Services</a>
+    <a href="#cbt">CBT Simulator</a>
+    <a href="#redirect">Redirect</a>
+    <a href="#faq">FAQ</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<section class="hero" id="about">
+  <h1>Welcome to Flexi Tutors</h1>
+  <p>Your trusted partner for exam tips and academic success!</p>
+</section>
+
+<section class="services" id="services">
+  <div class="service-item">
+    <h3>WAEC Exam Tips</h3>
+    <p>Get expert advice and techniques to excel in your WAEC exams.</p>
+  </div>
+  <div class="service-item">
+    <h3>JAMB Preparation</h3>
+    <p>Effective tutorials and practice questions for your JAMB success.</p>
+  </div>
+  <div class="service-item">
+    <h3>Post-UTME Tutorials</h3>
+    <p>Comprehensive coaching tailored to your university admission needs.</p>
+  </div>
+  <div class="service-item">
+    <h3>Flexible Online Classes</h3>
+    <p>Learn from anywhere with our interactive and flexible online sessions.</p>
+  </div>
+</section>
+
+<section id="cbt">
+  <h2 style="text-align:center;color:#2e7d32;">CBT Simulator</h2>
+  <p style="text-align:center;">Practice with our JAMB/WAEC CBT simulation tools. <a href="https://myschool.ng/classroom/exam/jamb/">JAMB cbt practice</a></p>
+</section>
+
+<section id="redirect" style="text-align:center;margin:30px 0;">
+  <h2 style="color:#2e7d32;">Linked Resource</h2>
+  <p>Click below to be redirected:</p>
+  <a href="https://example.com" target="_blank">Visit Linked Resource</a>
+</section>
+
+<section class="faq-section" id="faq">
+  <h2>Frequently Asked Questions</h2>
+  <div class="faq">
+    <h4>How do I register for Flexi Tutors classes?</h4>
+    <p>You can register by contacting us via WhatsApp or Telegram through the contact info below.</p>
+  </div>
+  <div class="faq">
+    <h4>Are your tutorials online or physical?</h4>
+    <p>We primarily offer online classes to make learning flexible and accessible to everyone.</p>
+  </div>
+  <div class="faq">
+    <h4>What subjects do you cover?</h4>
+    <p>We cover WAEC, JAMB, and Post-UTME topics with expert tutors in English, Mathematics, Science, and General Knowledge.</p>
+  </div>
+  <div class="faq">
+    <h4>How can I get exam tips and updates?</h4>
+    <p>Follow us on WhatsApp and Telegram for daily exam tips, updates, and practice questions.</p>
+  </div>
+</section>
+
+<section class="contact-section" id="contact">
+  <h2>Contact Us</h2>
+  <form action="https://formsubmit.co/youremail@example.com" method="POST">
+    <label for="name">Full Name</label>
+    <input type="text" id="name" name="name" placeholder="Your full name" required />
+    
+    <label for="email">Email Address</label>
+    <input type="email" id="email" name="email" placeholder="Your email" required />
+    
+    <label for="message">Message</label>
+    <textarea id="message" name="message" rows="5" placeholder="Your message here" required></textarea>
+    
+    <!-- Optional: Prevent spam -->
+    <input type="hidden" name="_captcha" value="false">
+    
+    <button type="submit">Send Message</button>
+  </form>
+</section>
+
+<footer>
+  <p>Contact us: WhatsApp: 0705 176 8946 | Telegram: @flexitutors</p>
+  <p>&copy; 2025 Flexi Tutors. All rights reserved.</p>
+</footer>
+
+<!-- Floating WhatsApp Button -->
+<a class="whatsapp-float" 
+   href="https://wa.me/2349034159839?text=Hi%20I%E2%80%99m%20interested%20in%20exams%20Tips%20and%20preparation.%20Can%20you%20assist%20me?" 
+   target="_blank" title="Chat with us on WhatsApp" aria-label="Chat with us on WhatsApp">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" 
+       alt="WhatsApp" style="width:28px;height:28px;vertical-align:middle;">
+</a>
+
+<!-- AI Bot Button -->
+<div class="ai-bot" onclick="window.open('https://wisdomuko2008.github.io/JAMBassist-', '_blank')">💬</div>
+
+<script>
+  function toggleMenu() {
+    const menu = document.getElementById('mainNav');
+    menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
+  }
+  // Reset menu on resize
+  window.addEventListener('resize', () => {
+    const menu = document.getElementById('mainNav');
+    if (window.innerWidth > 768) {
+      menu.style.display = 'flex';
+    } else {
+      menu.style.display = 'none';
+    }
+  });
+  // FAQ toggle
+  document.querySelectorAll('.faq h4').forEach(faqHeader => {
+    faqHeader.addEventListener('click', () => {
+      const faq = faqHeader.parentElement;
+      faq.classList.toggle('open');
+    });
+  });
+</script>
+
+</body>
+</html>
